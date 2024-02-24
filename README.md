@@ -17,7 +17,7 @@ Before you begin, ensure you have the following installed on your machine:
 1. Clone the repository to your local machine.
 
     ```bash
-    git clone https://github.com/Serzhs/node_express_mysql.git
+    git clone https://github.com/uldisgabers/workout-app-back-end-db-express-js.git
     ```
 
 2. Navigate to the project directory.
@@ -55,3 +55,5 @@ npm run start:nodemon
 ```
 
 This will start the development server, and you can access the application at http://localhost:3001.
+
+boilerplate by Serzhs
