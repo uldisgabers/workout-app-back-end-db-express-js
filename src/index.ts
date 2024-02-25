@@ -61,6 +61,39 @@ app.post("/workouts", async (req, res) => {
   );
 });
 
+app.post("/workout_details", async (req, res) => {
+  const { id, workoutId, muscleGroup, name, sets, oneSetLength, restLength } =
+    req.body;
+
+  if (
+    !id ||
+    !workoutId ||
+    !muscleGroup ||
+    !name ||
+    !sets ||
+    !oneSetLength ||
+    !restLength
+  ) {
+    res.status(400).send("Invalid data");
+    return;
+  }
+
+  connection.query(
+    `
+      INSERT INTO workout_details (id, workoutId, muscleGroup, name, sets, oneSetLength, restLength)
+      VALUES ('${id}', '${workoutId}', '${muscleGroup}', '${name}', '${sets}', '${oneSetLength}', '${restLength}')
+    `,
+    (error, results) => {
+      if (error) {
+        res.status(500).json({ error: "Internal Server Error" });
+        return;
+      }
+
+      res.json({ workouts: results });
+    }
+  );
+});
+
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
